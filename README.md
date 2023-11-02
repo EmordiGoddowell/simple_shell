@@ -67,7 +67,7 @@ The Gates of Shell is an ALX project that delves deep into the advanced concepts
 
 - **File Input Finesse:** The shell demonstrates remarkable versatility in processing commands from an input file, streamlining the execution process.
 
-## Builtins
+## Built-ins
 
 - **Graceful Exit:** `exit [STATUS]` - Bid adieu to the shell with grace, optionally specifying an exit status.
 
