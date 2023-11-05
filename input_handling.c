@@ -72,7 +72,7 @@ void hashtag(char *buff)
  * Return: 1 on success, 0 on failure
 **/
 
-unsigned int check_delim(char c, const char *str)
+unsigned int check_separate(char c, const char *str)
 {
 	unsigned int i;
 
