@@ -48,7 +48,7 @@ char *get_line()
 /**
  * _strtok - function that extracts tokens of a string
  * @str: string
- * @delim: delimiter
+ * @separate: delimiter
  * Return: pointer to the next token or NULL
 **/
 
