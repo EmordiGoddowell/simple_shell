@@ -5,7 +5,7 @@
  * Return: The input on a buffer
 **/
 
-char *get_line()
+char *get_line(void)
 {
 	int i, rd, buffsize = BUFSIZE;
 	char c = 0, *buffer, *buf;
