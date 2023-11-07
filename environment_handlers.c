@@ -94,3 +94,36 @@ int print_history(__attribute__((unused))
 	fclose(fp);
 	return (0);
 }
+
+/**
+ * init_environment - Initializes an array to store environment variables
+ * @env_vars: Array to store environment variables
+ *
+ * This function populates an array with environment variables.
+**/
+
+void init_environment(char **env_vars)
+{
+	int i;
+
+	for (i = 0; environ[i]; i++)
+		env_vars[i] = _strdup(environ[i]);
+	env_vars[i] = NULL;
+}
+
+/**
+ * free_environment - Frees memory allocated for environment variables array
+ * @env_vars: Array of environment variables to be freed
+ *
+ * This function releases the memory used to store environment variables.
+**/
+
+void free_environment(char **env_vars)
+{
+	int i;
+
+	for (i = 0; env_vars[i]; i++)
+	{
+		free(env_vars[i]);
+	}
+}
