@@ -7,7 +7,7 @@
 void display_help_all(void)
 {
 	char *msg = "Greetings from Shellby\n"
-		"This is where internal shell commands are defined.\n"
+		"This is where internal shell commands are defined.\n";
 
 	write(STDOUT_FILENO, msg, strlen(msg));
 	msg = "Type 'help' to see this list.\nType 'help name' to find ";
