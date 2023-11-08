@@ -7,10 +7,14 @@
 extern char **environ;
 
 #include <ctype.h>
+#include <errno.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 /**
  * struct built_in - Defines a structure that associates built-in commands
@@ -65,7 +69,7 @@ char *get_env(char *name);
 char *new_line(char *string);
 char *white_space(char *str);
 void hashtag(char *buff);
-unsigned int check_delim(char c, const char *str);
+unsigned int check_separate(char c, const char *str);
 
 /** parse_command.c **/
 char **parse_command(char *input);
