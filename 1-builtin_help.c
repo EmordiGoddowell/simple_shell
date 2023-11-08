@@ -56,20 +56,20 @@ void display_help_unsetenv(void)
 int display_help(char **cmd, __attribute__((unused))int st)
 {
 	if (!cmd[1])
-		help_all();
+		display_help_all();
 	else if (strcmp(cmd[1], "alias") == 0)
-		help_alias();
+		display_help_alias();
 	else if (strcmp(cmd[1], "cd") == 0)
-		help_cd();
+		display_help_cd();
 	else if (strcmp(cmd[1], "exit") == 0)
-		help_exit();
+		display_help_exit();
 	else if (strcmp(cmd[1], "env") == 0)
-		help_env();
+		display_help_env();
 	else if (strcmp(cmd[1], "setenv") == 0)
-		help_setenv();
+		display_help_setenv();
 	else if (strcmp(cmd[1], "unsetenv") == 0)
-		help_unsetenv();
+		display_help_unsetenv();
 	else if (strcmp(cmd[1], "help") == 0)
-		help_help();
+		display_help_help();
 	return (0);
 }
