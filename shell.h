@@ -138,4 +138,7 @@ void ignore_sigint(int sig);
 /** main.c **/
 int main(__attribute__((unused)) int argc, char **argv);
 
+/** change_directory.c **/
+int change_directory(char **cmd, __attribute__((unused))int st);
+
 #endif /** SHELL_H **/
