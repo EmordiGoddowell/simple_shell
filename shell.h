@@ -68,10 +68,15 @@ void display_help_setenv(void);
 void display_help_unsetenv(void);
 int display_help(char **cmd, __attribute__((unused)) int st);
 
-/** command_handling.c **/
+/** 0-command_handling.c **/
 int detect_builtin(char **cmd);
 int process_builtin(char **cmd, int st);
 void process_exit(char **cmd, char *input, char **argv, int c, int stat);
+
+/** 1-command_handling.c **/
+void print_prompt(void);
+int record_command(char *input);
+char **split_command(char *input);
 
 /** flip_array.c int_count.c uint_char.c **/
 void flip_array(char *arr, int len);
