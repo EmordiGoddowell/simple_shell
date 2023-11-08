@@ -11,14 +11,14 @@ int find_cmd(char **cmd)
 	char *path, *value, *cmd_path;
 	struct stat buf;
 
-	path = _getenv("PATH");
+	path = get_env("PATH");
 	value = _strtok(path, ":");
 	while (value != NULL)
 	{
-		cmd_path = build(*cmd, value);
+		cmd_path = build_path(*cmd, value);
 		if (stat(cmd_path, &buf) == 0)
 		{
-			*cmd = _strdup(cmd_path);
+			*cmd = strdup(cmd_path);
 			free(cmd_path);
 			free(path);
 			return (0);
@@ -43,8 +43,10 @@ char *build_path(char *token, char *value)
 	char *cmd;
 	size_t len;
 
-	len = _strlen(value) + _strlen(token) + 2;
+	len = strlen(value) + strlen(token) + 2;
+
 	cmd = malloc(sizeof(char) * len);
+
 	if (cmd == NULL)
 	{
 		free(cmd);
@@ -53,9 +55,9 @@ char *build_path(char *token, char *value)
 
 	memset(cmd, 0, len);
 
-	cmd = _strcat(cmd, value);
-	cmd = _strcat(cmd, "/");
-	cmd = _strcat(cmd, token);
+	cmd = strcat(cmd, value);
+	cmd = strcat(cmd, "/");
+	cmd = strcat(cmd, token);
 
 	return (cmd);
 }
@@ -72,13 +74,15 @@ char *get_env(char *name)
 	char *value;
 	int i, j, k;
 
-	name_len = _strlen(name);
+	name_len = strlen(name);
 	for (i = 0 ; environ[i]; i++)
 	{
-		if (_strncmp(name, environ[i], name_len) == 0)
+		if (strncmp(name, environ[i], name_len) == 0)
 		{
-			value_len = _strlen(environ[i]) - name_len;
+			value_len = strlen(environ[i]) - name_len;
+
 			value = malloc(sizeof(char) * value_len);
+
 			if (!value)
 			{
 				free(value);
