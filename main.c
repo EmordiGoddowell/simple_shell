@@ -21,12 +21,12 @@ int main(__attribute__((unused)) int argc, char **argv)
 	{
 		count++;
 		if (isatty(STDIN_FILENO))
-			prompt();
+			print_prompt();
 		input = get_line();
 		if (input[0] == '\0')
 			continue;
 		record_command(input);
-		commands = divide_command(input);
+		commands = split_command(input);
 		for (i = 0; commands[i] != NULL; i++)
 		{
 			cmd = parse_command(commands[i]);
