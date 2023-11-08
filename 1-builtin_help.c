@@ -58,11 +58,11 @@ int display_help(char **cmd, __attribute__((unused))int st)
 	if (!cmd[1])
 		display_help_all();
 	else if (strcmp(cmd[1], "alias") == 0)
-		display_help_alias();
+		display_alias_help();
 	else if (strcmp(cmd[1], "cd") == 0)
-		display_help_cd();
+		display_cd_help();
 	else if (strcmp(cmd[1], "exit") == 0)
-		display_help_exit();
+		display_exit_help();
 	else if (strcmp(cmd[1], "env") == 0)
 		display_help_env();
 	else if (strcmp(cmd[1], "setenv") == 0)
