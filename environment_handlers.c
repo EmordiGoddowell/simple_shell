@@ -15,7 +15,7 @@ int print_env(__attribute__((unused))
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		len = _strlen(environ[i]);
+		len = strlen(environ[i]);
 		write(1, environ[i], len);
 		write(STDOUT_FILENO, "\n", 1);
 	}
@@ -34,25 +34,25 @@ int process_echo(char **cmd, int st)
 	char *path;
 	unsigned int pid = getppid();
 
-	if (_strncmp(cmd[1], "$?", 2) == 0)
+	if (strncmp(cmd[1], "$?", 2) == 0)
 	{
-		print_number_int(st);
+		print_int(st);
 		OUTPUT("\n");
 	}
-	else if (_strncmp(cmd[1], "$$", 2) == 0)
+	else if (strncmp(cmd[1], "$$", 2) == 0)
 	{
-		print_number(pid);
+		print_unsigned_int(pid);
 		OUTPUT("\n");
 	}
-	else if (_strncmp(cmd[1], "$PATH", 5) == 0)
+	else if (strncmp(cmd[1], "$PATH", 5) == 0)
 	{
-		path = _getenv("PATH");
+		path = get_env("PATH");
 		OUTPUT(path);
 		OUTPUT("\n");
 		free(path);
 	}
 	else
-		return (print_echo(cmd));
+		return (process_echo(cmd));
 
 	return (1);
 }
@@ -80,14 +80,14 @@ int print_history(__attribute__((unused))
 	{
 		return (-1);
 	}
-	while ((get_line(&line, &len, fp)) != -1)
+	while ((getline(&line, &len, fp)) != -1)
 	{
 		counter++;
-		er = _itoa(counter);
-		PRINT(er);
+		er = uint_char(counter);
+		OUTPUT(er);
 		free(er);
-		PRINT(" ");
-		PRINT(line);
+		OUTPUT(" ");
+		OUTPUT(line);
 	}
 	if (line)
 		free(line);
@@ -107,7 +107,7 @@ void init_environment(char **env_vars)
 	int i;
 
 	for (i = 0; environ[i]; i++)
-		env_vars[i] = _strdup(environ[i]);
+		env_vars[i] = strdup(environ[i]);
 	env_vars[i] = NULL;
 }
 
