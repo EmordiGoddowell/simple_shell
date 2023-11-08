@@ -15,7 +15,7 @@ void print_error_message(char *input, int counter, char **argv)
 
 	OUTPUT(argv[0]);
 	OUTPUT(": ");
-	er = _itoa(counter);
+	er = uint_char(counter);
 	OUTPUT(er);
 	free(er);
 	OUTPUT(": ");
@@ -34,7 +34,7 @@ void print_error_message(char *input, int counter, char **argv)
 
 void custom_error(char **argv, int c, char **cmd)
 {
-	char *er = _itoa(c);
+	char *er = uint_char(c);
 
 	OUTPUT(argv[0]);
 	OUTPUT(": ");
@@ -57,7 +57,7 @@ void custom_error(char **argv, int c, char **cmd)
 
 void file_error_handler(char **argv, int c)
 {
-	char *er = _itoa(c);
+	char *er = uint_char(c);
 
 	OUTPUT(argv[0]);
 	OUTPUT(": ");
