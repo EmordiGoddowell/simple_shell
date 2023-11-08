@@ -24,7 +24,7 @@ int detect_builtin(char **cmd)
 	}
 	while ((fun + i)->command)
 	{
-		if (_strcmp(cmd[0], (fun + i)->command) == 0)
+		if (strcmp(cmd[0], (fun + i)->command) == 0)
 			return (0);
 		i++;
 	}
@@ -42,7 +42,7 @@ int process_builtin(char **cmd, int st)
 {
 	builtin built_in[] = {
 		{"cd", change_directory},
-		{"env", print_environment},
+		{"env", init_environment},
 		{"help", display_help},
 		{"echo", execute_echo},
 		{"history", print_history},
