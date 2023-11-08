@@ -42,9 +42,9 @@ int process_builtin(char **cmd, int st)
 {
 	builtin built_in[] = {
 		{"cd", change_directory},
-		{"env", init_environment},
+		{"env", print_env},
 		{"help", display_help},
-		{"echo", execute_echo},
+		{"echo", process_echo},
 		{"history", print_history},
 		{NULL, NULL}
 	};
