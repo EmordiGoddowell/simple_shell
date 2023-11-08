@@ -78,4 +78,30 @@ void flip_array(char *arr, int len);
 int int_count(int num);
 char *uint_char(unsigned int n);
 
+/** environment_handlers.c **/
+int print_env(__attribute__((unused))
+		char **cmd, __attribute__((unused)) int st);
+int process_echo(char **cmd, int st);
+int print_history(__attribute__((unused))
+		char **c, __attribute__((unused))int st);
+void init_environment(char **env_vars);
+void free_environment(char **env_vars);
+
+/**  file_command_processor.c **/
+void process_file(char *file, char **argv);
+void process_command(char *line, int count, FILE *fp, char **argv);
+void file_exit(char **cmd, char *line, FILE *fd);
+
+/** memory_management.c **/
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *_memcpy(char *dest, char *src, unsigned int n);
+void *_calloc(unsigned int size);
+void release_memory(char **cmd, char *line);
+void *initialize_memory(void *a, int el, unsigned int len);
+
+/** print_and_execute.c **/
+void print_unsigned_int(unsigned int n);
+void print_int(int n);
+int execute_echo(char **cmd);
+
 #endif /** SHELL_H **/
