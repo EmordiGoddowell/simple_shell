@@ -11,6 +11,7 @@ char *get_line(void)
 	char c = 0, *buffer, *buf;
 
 	buffer = malloc(buffsize);
+
 	if (buffer == NULL)
 	{
 		free(buffer);
@@ -27,7 +28,7 @@ char *get_line(void)
 		}
 		buffer[i] = c;
 		if (buffer[0] == '\n')
-			return (enter(buffer));
+			return (new_line(buffer));
 		if (i >= buffsize)
 		{
 			buffer = realloc(buffer, (buffsize + 2));
@@ -39,9 +40,9 @@ char *get_line(void)
 		}
 	}
 	buffer[i] = '\0';
-	buf = space(buffer);
+	buf = white_space(buffer);
 	free(buffer);
-	hashtag_handler(buf);
+	hashtag(buf);
 	return (buf);
 }
 
@@ -65,7 +66,7 @@ char *_strtok(char *str, const char *separate)
 		return (NULL);
 	for (i = 0; tokens[i] != '\0'; i++)
 	{
-		if (check_delim(tokens[i], delim) == 0)
+		if (check_separate(tokens[i], delim) == 0)
 			break;
 	}
 	if (new_token[i] == '\0' || new_token[i] == '#')
@@ -77,7 +78,7 @@ char *_strtok(char *str, const char *separate)
 	new_token = tokens;
 	for (i = 0; new_token[i] != '\0'; i++)
 	{
-		if (check_delim(new_token[i], delim) == 1)
+		if (check_separate(new_token[i], delim) == 1)
 			break;
 	}
 	if (new_token[i] == '\0')
