@@ -51,14 +51,15 @@ char **split_command(char *input)
 	char **commands;
 	char *command;
 	int i;
-	int buffsize = BUFSIZE;
+	int buffsize = BUFFER_SIZE;
 
-	if (input[0] == ' ' && input[_strlen(input)] == ' ')
+	if (input[0] == ' ' && input[strlen(input)] == ' ')
 		exit(0);
 	if (input == NULL)
 		return (NULL);
 
 	commands = malloc(sizeof(char *) * buffsize);
+
 	if (!commands)
 	{
 		free(commands);
