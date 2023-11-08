@@ -23,7 +23,7 @@ char *white_space(char *str)
 	int i, j = 0;
 	char *buff;
 
-	buff = malloc(sizeof(char) * (_strlen(str) + 1));
+	buff = malloc(sizeof(char) * (strlen(str) + 1));
 	if (buff == NULL)
 	{
 		free(buff);
