@@ -3,13 +3,30 @@
 
 #define BUFFER_SIZE 10240
 #define SEPARATOR " \t\r\n\a"
-#define OUTPUT(c) (write(STDERR_FILENO, c, _strlen(c)))
+#define OUTPUT(c) (write(STDERR_FILENO, c, strlen(c)))
+extern char **environ;
 
 #include <ctype.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+/**
+ * struct built_in - Defines a structure that associates built-in commands
+ *	with their corresponding function implementations
+ * @command: The built-in command as a string
+ * @function: A function pointer to the implementation of the built-in command.
+ *
+ * The function takes an array of strings (the command and its arguments) and 
+ *	an integer status as parameters, and returns an integer status.
+**/
+
+typedef struct built_in
+{
+	char *command;
+	int (*function)(char **line, int st);
+} builtin;
 
 /** error_functions.c **/
 void print_error_message(char *input, int counter, char **argv);
@@ -108,5 +125,12 @@ void *initialize_memory(void *a, int el, unsigned int len);
 void print_unsigned_int(unsigned int n);
 void print_int(int n);
 int execute_echo(char **cmd);
+
+/** execute_and_handle.c **/
+int detect_command(char **cmd, char *input, int c, char **argv);
+void ignore_sigint(int sig);
+
+/** main.c **/
+int main(__attribute__((unused)) int argc, char **argv);
 
 #endif /** SHELL_H **/
