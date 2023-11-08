@@ -7,7 +7,7 @@
 
 char *get_line(void)
 {
-	int i, rd, buffsize = BUFSIZE;
+	int i, rd, buffsize = BUFFER_SIZE;
 	char c = 0, *buffer, *buf;
 
 	buffer = malloc(buffsize);
