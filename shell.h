@@ -77,7 +77,7 @@ char **parse_command(char *input);
 
 /** getline_strtok.c **/
 char *get_line(void);
-char *_strtok(char *str, const char *separate);
+char *_strtok(char *str, const char *delim);
 
 /** 0-builtin_help.c 1-builtin_help.c **/
 void display_help_all(void);

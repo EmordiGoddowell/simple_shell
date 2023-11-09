@@ -53,7 +53,7 @@ char *get_line(void)
  * Return: pointer to the next token or NULL
 **/
 
-char *_strtok(char *str, const char *separate)
+char *_strtok(char *str, const char *delim)
 {
 	static char *tokens;
 	static char *new_token;
