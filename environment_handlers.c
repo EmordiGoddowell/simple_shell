@@ -52,7 +52,7 @@ int process_echo(char **cmd, int st)
 		free(path);
 	}
 	else
-		return (process_echo(cmd));
+		return (execute_echo(cmd));
 
 	return (1);
 }
