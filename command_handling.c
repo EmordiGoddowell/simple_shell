@@ -25,7 +25,7 @@ return (-1);
 }
 while ((fun + i)->command)
 {
-if (_strcmp(cmd[0], (fun + i)->command) == 0)
+if (strcmp(cmd[0], (fun + i)->command) == 0)
 return (0);
 i++;
 }
