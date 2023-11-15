@@ -4,7 +4,6 @@
 #define BUFFER_SIZE 10240
 #define SEPARATOR " \t\r\n\a"
 #define OUTPUT(c) (write(STDERR_FILENO, c, strlen(c)))
-
 extern char **environ;
 
 #include <ctype.h>
@@ -26,7 +25,7 @@ extern char **environ;
  * @command: The built-in command as a string
  * @function: A function pointer to the implementation of the built-in command.
  *
- * The function takes an array of strings (the command and its arguments) and
+ * The function takes an array of strings (the command and its arguments) and 
  *	an integer status as parameters, and returns an integer status.
 **/
 
@@ -40,6 +39,29 @@ typedef struct built_in
 void print_error_message(char *input, int counter, char **argv);
 void custom_error(char **argv, int c, char **cmd);
 void file_error_handler(char **argv, int c);
+
+/**
+** 0-string_io_functions.c **
+char *_strncpy(char *dest, char *src, int n);
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
+int _strncmp(const char *s1, const char *s2, size_t n);
+
+** 1-string_io_function.c **
+int _putchar(char c);
+void _puts(char *str);
+int _atoi(char *s);
+char *_strchr(char *s, char c);
+char *_strdup(char *str);
+
+** 2-string_io_function.c **
+int _isalpha(int c);
+void flip_array(char *arr, int len);
+int int_count(int num);
+char *uint_char(unsigned int n);
+int _strcmp(char *s1, char *s2);
+**/
 
 /** command_operations.c **/
 int find_cmd(char **cmd);
@@ -57,7 +79,7 @@ char **parse_command(char *input);
 
 /** getline_strtok.c **/
 char *get_line(void);
-char *_strtok(char *str, const char *delim);
+char *_strtok(char *str, const char *separate);
 
 /** 0-builtin_help.c 1-builtin_help.c **/
 void display_help_all(void);
@@ -86,11 +108,11 @@ int int_count(int num);
 char *uint_char(unsigned int n);
 
 /** environment_handlers.c **/
-int print_env(__attribute__((unused))char **cmd,
-		__attribute__((unused)) int st);
+int print_env(__attribute__((unused))
+		char **cmd, __attribute__((unused)) int st);
 int process_echo(char **cmd, int st);
-int print_history(__attribute__((unused))char **c,
-		__attribute__((unused))int st);
+int print_history(__attribute__((unused))
+		char **c, __attribute__((unused))int st);
 void init_environment(char **env_vars);
 void free_environment(char **env_vars);
 
