@@ -1,21 +1,4 @@
-#include "shell.h"
 
-/**
- * print_prompt - Outputs a '$'
- *	symbol to standard output as a command prompt
-**/
-
-void print_prompt(void)
-{
-	OUTPUT("$ ");
-}
-
-/**
- * record_command - Stores user input in a
- *	file for command history
- * @input: User input to be stored
- * Return: 0 on success, -1 on failure
-**/
 
 int record_command(char *input)
 {
