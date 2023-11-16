@@ -16,7 +16,6 @@ int main(__attribute__((unused)) int argc, char **argv)
 	if (argv[1] != NULL)
 		process_file(argv[1], argv);
 	signal(SIGINT, ignore_sigint);
-
 	while (condition)
 	{
 		count++;
@@ -42,9 +41,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 				continue;
 			}
 			else
-			{
 				stat = detect_command(cmd, input, count, argv);
-			}
 			free(cmd);
 		}
 		free(input);
