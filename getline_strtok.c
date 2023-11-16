@@ -53,7 +53,7 @@ char *get_line(void)
  * Return: pointer to the next token or NULL
 **/
 
-char *_strtok(char *str, const char *delim)
+char *_strtok(char *str, const char *separate)
 {
 	static char *tokens;
 	static char *new_token;
@@ -66,7 +66,7 @@ char *_strtok(char *str, const char *delim)
 		return (NULL);
 	for (i = 0; tokens[i] != '\0'; i++)
 	{
-		if (check_separate(tokens[i], delim) == 0)
+		if (check_separate(tokens[i], separate) == 0)
 			break;
 	}
 	if (new_token[i] == '\0' || new_token[i] == '#')
@@ -78,7 +78,7 @@ char *_strtok(char *str, const char *delim)
 	new_token = tokens;
 	for (i = 0; new_token[i] != '\0'; i++)
 	{
-		if (check_separate(new_token[i], delim) == 1)
+		if (check_separate(new_token[i], separate) == 1)
 			break;
 	}
 	if (new_token[i] == '\0')
